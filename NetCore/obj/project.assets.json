@@ -11831,11 +11831,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\NTQ\\Desktop\\DongNT\\Base\\BaseCode\\BaseCode\\NetCore.csproj",
+      "projectUniqueName": "C:\\Users\\NTQ\\Desktop\\DongNT\\Base\\Base\\NetCore\\NetCore.csproj",
       "projectName": "NetCore",
-      "projectPath": "C:\\Users\\NTQ\\Desktop\\DongNT\\Base\\BaseCode\\BaseCode\\NetCore.csproj",
+      "projectPath": "C:\\Users\\NTQ\\Desktop\\DongNT\\Base\\Base\\NetCore\\NetCore.csproj",
       "packagesPath": "C:\\Users\\NTQ\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTQ\\Desktop\\DongNT\\Base\\BaseCode\\BaseCode\\obj\\",
+      "outputPath": "C:\\Users\\NTQ\\Desktop\\DongNT\\Base\\Base\\NetCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
