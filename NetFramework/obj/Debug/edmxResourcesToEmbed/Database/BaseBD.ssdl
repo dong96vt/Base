@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaseDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACCOUNT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="int" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastTimeLogin" Type="datetime" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="GroupRoleID" Type="uniqueidentifier" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BaseDB.dbo.CONTROL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CONTROL">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Url" />
+      <PropertyRef Name="CreateBy" />
+      <PropertyRef Name="CreareDate" />
+      <PropertyRef Name="DeleteFlg" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="200" />
+    <Property Name="CreateBy" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreareDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="uniqueidentifier" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BaseDB.dbo.GROUP_ROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GROUP_ROLE">
+    <Key>
+      <PropertyRef Name="CreateBy" />
+      <PropertyRef Name="CreareDate" />
+      <PropertyRef Name="DeleteFlg" />
+    </Key>
+    <Property Name="ID" Type="nchar" MaxLength="10" />
+    <Property Name="Name" Type="nchar" MaxLength="10" />
+    <Property Name="CreateBy" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreareDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="uniqueidentifier" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="200" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+    <Property Name="CreateBy" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreareDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="uniqueidentifier" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccountID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ItemID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GruopRoleID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityContainer Name="BaseDBModelStoreContainer">
+    <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONTROL" EntityType="Self.CONTROL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CONTROL].[ID] AS [ID], 
+    [CONTROL].[Code] AS [Code], 
+    [CONTROL].[Name] AS [Name], 
+    [CONTROL].[Url] AS [Url], 
+    [CONTROL].[Icon] AS [Icon], 
+    [CONTROL].[CreateBy] AS [CreateBy], 
+    [CONTROL].[CreareDate] AS [CreareDate], 
+    [CONTROL].[UpdateBy] AS [UpdateBy], 
+    [CONTROL].[UpdateDate] AS [UpdateDate], 
+    [CONTROL].[DeleteFlg] AS [DeleteFlg]
+    FROM [dbo].[CONTROL] AS [CONTROL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GROUP_ROLE" EntityType="Self.GROUP_ROLE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GROUP_ROLE].[ID] AS [ID], 
+    [GROUP_ROLE].[Name] AS [Name], 
+    [GROUP_ROLE].[CreateBy] AS [CreateBy], 
+    [GROUP_ROLE].[CreareDate] AS [CreareDate], 
+    [GROUP_ROLE].[UpdateBy] AS [UpdateBy], 
+    [GROUP_ROLE].[UpdateDate] AS [UpdateDate], 
+    [GROUP_ROLE].[DeleteFlg] AS [DeleteFlg]
+    FROM [dbo].[GROUP_ROLE] AS [GROUP_ROLE]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
