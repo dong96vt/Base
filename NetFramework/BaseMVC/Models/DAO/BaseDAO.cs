@@ -6,6 +6,7 @@ using AutoMapper;
 using NetFramework.Models.DTO;
 using System.Linq;
 using System.Collections.Generic;
+using NetFramework.Common;
 
 namespace NetFramework.Models.DAO
 {
@@ -52,7 +53,7 @@ namespace NetFramework.Models.DAO
                 foreach (var obj in objs)
                 {
                     var entity = context.Where(queryCondition).FirstOrDefault();
-                    entity = mapper.Map<TDTO, T>(obj);
+                    entity = CustomMapper.UpdateDataMap(obj, entity);
                 }
                 return contextFactory.Save();
             }
